@@ -5,6 +5,7 @@ from django.http import JsonResponse
 import pandas as pd
 import matplotlib.pyplot as plt
 
+
 # Zdefiniowane funkcje do przekazania do urls. każda funckaj odpowida urls
 @login_required()
 def dane(request):
@@ -24,31 +25,42 @@ def index(request):
 
 
 def my_login_view(request):
-    return LoginView.as_view(template_name='login.html')(request)
+    return LoginView.as_view(template_name="login.html")(request)
 
 
-csv_files = ['data/Crimes-2021.csv', 'data/Crimes-2022.csv', 'data/Crimes-2023.csv', 'data/Crimes-2024.csv']
-dfs = [pd.read_csv(csv_file, delimiter=';') for csv_file in csv_files]
+csv_files = [
+    "data/Crimes-2021.csv",
+    "data/Crimes-2022.csv",
+    "data/Crimes-2023.csv",
+    "data/Crimes-2024.csv",
+]
+dfs = [pd.read_csv(csv_file, delimiter=";") for csv_file in csv_files]
 
 
 def dane_view(request):
-    return render(request, 'dane.html')
+    return render(request, "dane.html")
 
 
 def generate_wykres(request):
     data_lengths = [len(df) for df in dfs]
-    years = ['2021', '2022', '2023', '2024']
+    years = ["2021", "2022", "2023", "2024"]
     positions = range(len(data_lengths))
 
     width = 0.2
-    plt.bar(positions, data_lengths, width=width, color='r')
+    plt.bar(positions, data_lengths, width=width, color="r")
     plt.xticks(positions, years, rotation=80)
-    plt.title('Liczba przestępst w poszczególnych latach w Chicago', fontweight='bold', fontsize=15, x=0.5, y=1.1)
-    plt.ylabel('Ilość przestępstw', fontweight='bold', fontsize=15, labelpad=20)
+    plt.title(
+        "Liczba przestępst w poszczególnych latach w Chicago",
+        fontweight="bold",
+        fontsize=15,
+        x=0.5,
+        y=1.1,
+    )
+    plt.ylabel("Ilość przestępstw", fontweight="bold", fontsize=15, labelpad=20)
 
     # Zapisz wykres jako obrazek
-    image_path = 'media/images/wykres.png'
+    image_path = "media/images/wykres.png"
     plt.savefig(image_path)
     plt.close()
 
-    return JsonResponse({'image_url': '/' + image_path})
+    return JsonResponse({"image_url": "/" + image_path})

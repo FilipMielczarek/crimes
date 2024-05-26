@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "app_crimes_comparison",
-    "accounts"
+    "accounts",
 ]
 
 
@@ -60,9 +60,9 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
-            os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'registration', 'templates'),
-            os.path.join(BASE_DIR, 'accounts', 'templates'),
+            os.path.join(BASE_DIR, "templates"),
+            os.path.join(BASE_DIR, "registration", "templates"),
+            os.path.join(BASE_DIR, "accounts", "templates"),
         ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -125,13 +125,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "static/"
-STATICFILES_DIRS = ['statics']
+STATICFILES_DIRS = ["statics"]
 
-MEDIA_URL = 'media/'
-MEDIA_ROOT = 'media'
+MEDIA_URL = "media/"
+MEDIA_ROOT = "media"
 
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'dane'
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "dane"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

@@ -1,17 +1,20 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Log in">
+    <meta name="keywords" content="crimes log in">
     <title>Title</title>
     <link rel="stylesheet" href="{% static 'base.css' %}">
-</head>
-<body>
+  </head>
+  <body>
     <h2>Sign up</h2>
     <form method="post">
       {% csrf_token %}
       {{ form }}
       <button type="submit">Sign Up</button>
     </form>
-</body>
+  </body>
 </html>
